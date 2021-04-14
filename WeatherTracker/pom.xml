@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.1.RELEASE</version>
+    </parent>
+
+    <groupId>ru.abrakov.weathertracker</groupId>
+    <artifactId>WeatherTracker</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>liquibase</module>
+        <module>spring</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <org.postgresql.version>42.2.14</org.postgresql.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${org.postgresql.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>abrakov</id>
+<properties>
+    <url>jdbc:postgresql://localhost:5432/weathertracker</url>
+    <username>root</username>
+    <password>root</password>
+</properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>3.10.0</version>
+                    <configuration>
+                        <defaultSchemaName>public</defaultSchemaName>
+                        <changeLogFile>${basedir}/db/master.xml</changeLogFile>
+                        <url>${url}</url>
+                        <username>${username}</username>
+                        <password>${password}</password>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>updateSQL</goal>
+                                <goal>update</goal>
+                                <!--                            <goal>rollback</goal>-->
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

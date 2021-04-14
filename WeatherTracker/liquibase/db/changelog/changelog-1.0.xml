@@ -1,0 +1,92 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd ">
+
+    <changeSet id="20210412-01" author="abrakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="colleague" schemaName="public"/>
+            </not>
+        </preConditions>
+        <comment>Создание таблицы Colleague</comment>
+        <sql>
+            create table colleague (
+            id serial primary key,
+            surname varchar(50),
+            name varchar(50),
+            patronymic varchar(50),
+            position varchar(20),
+            birth_date date,
+            city varchar(30),
+            deleted boolean default false not null,
+            create_date timestamp(0) default current_timestamp not null,
+            delete_date timestamp(0)
+            );
+        </sql>
+        <rollback>
+            <sql>
+                drop table colleague;
+            </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="20210412-02" author="abrakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="colleague_id_seq" schemaName="public"/>
+            </not>
+        </preConditions>
+        <comment>Установка тек. значения сиквенса таблицы Colleague</comment>
+        <sql>
+            ALTER SEQUENCE colleague_id_seq RESTART WITH 38;
+        </sql>
+        <rollback>
+            <dropSequence sequenceName="colleague_id_seq"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="20210412-03" author="abrakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="weather" schemaName="public"/>
+            </not>
+        </preConditions>
+        <comment>Создание таблицы Weather</comment>
+        <sql>
+            create table weather (
+            id serial primary key,
+            id_colleague int,
+            constraint fk_colleague_id foreign key (id_colleague) references colleague(id),
+            temperature varchar(10),
+            description varchar(50),
+            last_date_update timestamp(0),
+            update_status varchar(10)
+            );
+        </sql>
+        <rollback>
+            <sql>
+                drop table weather;;
+            </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="20210412-04" author="abrakov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="weather_id_seq" schemaName="public"/>
+            </not>
+        </preConditions>
+        <comment>Установка тек. значения сиквенса таблицы Weather</comment>
+        <sql>
+            ALTER SEQUENCE weather_id_seq RESTART WITH 38;
+        </sql>
+        <rollback>
+            <dropSequence sequenceName="weather_id_seq"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
+
