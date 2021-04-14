@@ -2,8 +2,8 @@ package ru.abrakov.weathertracker.dao;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import ru.abrakov.weathertracker.entity.Colleague;
-import ru.abrakov.weathertracker.entity.Weather;
+import ru.abrakov.weathertracker.entity.colleague.Colleague;
+import ru.abrakov.weathertracker.entity.weather.Weather;
 
 import java.util.List;
 

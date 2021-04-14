@@ -1,4 +1,4 @@
-package ru.abrakov.weathertracker.entity;
+package ru.abrakov.weathertracker.entity.weather;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Weather implements Updatable {
+
 
     private int id;
 

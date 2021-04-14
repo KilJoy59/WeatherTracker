@@ -1,4 +1,4 @@
-package ru.abrakov.weathertracker.entity;
+package ru.abrakov.weathertracker.entity.colleague;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;

@@ -5,14 +5,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Order;
-import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.server.ResponseStatusException;
 import ru.abrakov.weathertracker.dao.WeatherRepository;
-import ru.abrakov.weathertracker.entity.ColleagueWeather;
-import ru.abrakov.weathertracker.entity.Weather;
+import ru.abrakov.weathertracker.entity.colleague.ColleagueWeather;
+import ru.abrakov.weathertracker.entity.weather.Weather;
 import ru.abrakov.weathertracker.mapper.WeatherColleagueMapper;
 
 import javax.persistence.EntityExistsException;

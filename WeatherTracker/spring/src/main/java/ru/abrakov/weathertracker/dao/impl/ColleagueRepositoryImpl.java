@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import ru.abrakov.weathertracker.dao.ColleagueRepository;
-import ru.abrakov.weathertracker.entity.Colleague;
+import ru.abrakov.weathertracker.entity.colleague.Colleague;
 
 import javax.persistence.EntityNotFoundException;
 import java.sql.Date;

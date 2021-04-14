@@ -3,9 +3,8 @@ package ru.abrakov.weathertracker.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import ru.abrakov.weathertracker.entity.ColleagueWeather;
-import ru.abrakov.weathertracker.entity.Weather;
-import ru.abrakov.weathertracker.entity.WeatherCity;
+import ru.abrakov.weathertracker.entity.colleague.ColleagueWeather;
+import ru.abrakov.weathertracker.entity.weather.WeatherCity;
 import ru.abrakov.weathertracker.service.WeatherService;
 
 import java.util.List;

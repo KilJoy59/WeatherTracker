@@ -1,8 +1,8 @@
 package ru.abrakov.weathertracker.service;
 
 import org.springframework.data.domain.Page;
-import ru.abrakov.weathertracker.entity.Colleague;
-import ru.abrakov.weathertracker.entity.Weather;
+import ru.abrakov.weathertracker.entity.colleague.Colleague;
+import ru.abrakov.weathertracker.entity.weather.Weather;
 
 import java.util.List;
 

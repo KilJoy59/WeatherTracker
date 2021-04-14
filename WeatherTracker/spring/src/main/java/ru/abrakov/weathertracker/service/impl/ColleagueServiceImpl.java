@@ -6,8 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.abrakov.weathertracker.dao.ColleagueRepository;
-import ru.abrakov.weathertracker.entity.Colleague;
-import ru.abrakov.weathertracker.entity.WeatherUrl;
+import ru.abrakov.weathertracker.entity.colleague.Colleague;
+import ru.abrakov.weathertracker.entity.weather.WeatherUrl;
 import ru.abrakov.weathertracker.service.ColleagueService;
 import ru.abrakov.weathertracker.service.WeatherService;
 
